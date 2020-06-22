@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+    {% if title=="Deleted Customer" %}
+        <h1>{{ title }}</h1>
+    {% else %}
+
+        <!--  Display the Term and Year here --->
+        {% if not customers %}
+            <h1>Customers not found !</h1>
+        {% else %}    
+        <center><h3>Customer Details :</h3></center>
+        <div>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">SSN Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <!-- Construct the rest of courses here -->
+                {% for customer in customers %}
+                <tr>
+                    <td scope='row'>{{ customer["ws_cust_id"] }}</td>
+                    <td scope='row'>{{ customer["ws_ssn"] }}</td>
+                    <td>{{ customer["ws_name"] }}</td>
+                    <td>{{ customer["ws_adrs"] }}</td>
+                    <td>{{ customer["ws_age"] }}</td>
+                    <td>
+                        <form action="{{url_for('delete_customer')}}" method="POST">
+                            <input type="hidden" name="ws_ssn" value="{{customer['ws_ssn']}}"> 
+                            <input type="hidden" name="ws_name" value="{{customer['ws_name']}}">
+                            <input type="hidden" name="ws_adrs" value="{{customer['ws_adrs']}}"> 
+                            <input type="hidden" name="ws_age" value="{{customer['ws_age']}}"> 
+
+                            <button class="btn-delete">Delete</button>
+                        </form>
+                    </td>
+                
+                </tr>
+                {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    {% endif %}
+{% endblock%}

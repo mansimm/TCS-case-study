@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    position: relative;
+    margin:0px;
+    
+}
+
+  
+
+header {
+    text-align: center;
+}
+
+li {
+    display: inline;
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover { color : red;}
+
+hr {
+    width: 100%;
+    height:4px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: darkblue;
+    border: 0 none;
+}
+
+.top-container {
+    background-color:black;
+    padding:5px;
+    border-bottom:2px solid #0f0f0f;
+}
+.bottom-container {
+    background: #333;
+    padding:5px;
+    border-top:2px solid #0f0f0f;
+   /* position:absolute;*/
+    bottom:0;
+}
+
+.container-term {
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+footer {
+    text-align: center;
+    height: 50px;
+    color: white;
+    padding: 5px;
+    margin-top: 10px;
+    bottom: 0px;
+}
+
+.btn-submit {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 5px 7px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+.btn-submit:hover {
+    background-color: blue;
+    opacity: 1;
+}
+.btn-delete {
+  background-color: red;
+  color: white;
+  padding: 5px 7px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.btn-delete:hover {
+  background-color:#fc2c2c;;
+  opacity: 1;
+}
+.error-message{
+    color: red;
+}
+
+.user{
+    float: right;
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    right: 4em;
+    top: 6em;
+}
+
+.btn-group button {
+    background-color:  black; /* Green background */
+    border: 1px solid white; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 550px; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+  }
+  
+  .btn-group button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: #282b28;
+  }
+
+
+  .btn-group1 button {
+    background-color: purple; /* Green background */
+    border: 1px solid white; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    width: 365px;
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .btn-group1:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .btn-group1 button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Add a background color on hover */
+  .btn-group1 button:hover {
+    background-color: #b431ae;
+  }
+
+  input[type=text], select ,input[type=password] ,textarea{
+    width: 400px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=text]:focus, input[type=password]:focus , textarea:focus{
+    background-color: #ddd;
+    outline: none;
+}
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 7px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  input[type=reset] {
+    width: 100%;
+    background-color:  red;
+    color: white;
+    padding: 7px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100px;
+  }
+  
+  input[type=reset]:hover {
+    background-color: #fc2c2c;
+  }
+  
+  .divclass {
+    border-radius: 5px;
+    background-color: #999ba1;
+    padding: 20px;
+    width: 450px;
+  }
+  .shadow {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  }
+  .box_shadow_logo {
+    width: 150px;
+    height:150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+  }
+
+  .btn1 {
+    width: 100%;
+    background-color: white;
+    color: #0275d8;
+    padding: 7px 10px;
+    margin: 1px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .btn1 :hover {
+    color: white;
+    background-color: #0a1d75;
+  }
+  
+
+  

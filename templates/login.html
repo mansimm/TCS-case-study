@@ -1,0 +1,56 @@
+    {% extends "layout.html" %}
+   
+    {% block content %}
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="divclass">
+            <form name="login" action="" method="post" novalidate>
+                <fieldset class='form-group'>
+                    <legend>{{ title }} </legend>
+                        {{ form.hidden_tag() }}
+
+                        <p>
+                            {{ form.user_login.label }}</br>
+                            {{ form.user_login(size=35) }}
+                            {% for error in form.user_login.errors %}
+                                <span class="error-message">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.password.label }}</br>
+                            {{ form.password(size=15) }}
+                            {% for error in form.password.errors %}
+                                <span class="error-message">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.type.label }}</br>
+                            {{ form.type }}
+                            {% for error in form.type.errors %}
+                                <span class="error-message">
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            <table align="center">
+                            <tr>
+                            <th width="100px"></th>
+                            <th width='200px'>{{ form.submit() }}</th>
+                            <th width='100px'></th>
+                            <th width='200px'><input type='reset' value="Reset"></th>
+                            <th width='100px'></th>
+                            </tr>
+                            </table></br>
+                        </p></br></br></br></br>
+                </fieldset>
+            </form>
+        </div>
+        </div>
+    </div>
+ {% endblock %}

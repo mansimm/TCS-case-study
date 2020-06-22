@@ -1,0 +1,159 @@
+
+    {% extends "layout.html" %}
+    {% block scripts %}
+        
+    {% endblock %}
+    {% block content %}
+        {% if  transactions %}
+        
+        <center><h3>Bank Statement :</h3></center>
+        <center>
+        <div class="table-responsive">
+            <table class="table table-hover"style="width:1000px ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Transaction Description</th>
+                        <th scope="col">Credit or Debit</th>
+                        <th scope="col">Balance</th>
+                        
+                    
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for transaction in transactions %}
+                    <tr>
+                        <td scope='row'>{{ transaction["ws_trxn_date"] }}</td>
+                        <td scope='row'>{{ transaction["description"] }}</td>
+                        <td scope='row'>{{ transaction["cr_or_db"] }}</td>
+                        <td scope='row'>{{ transaction["ws_amt"] }}</td>
+                        
+                    
+                    </tr>
+                    {% endfor %}
+                
+                <tbody>
+
+                
+                
+                </tbody>
+            </table>
+        </div>
+    </center>
+        {% else %}   
+            <script>
+                function validateForm() {
+                    var x = document.forms["statements"]["ws_acc_id"].value;
+                    var y = document.forms["statements"]["option"].value;
+                    if (x == "") {
+                        alert("Account id must be enter.");
+                        return false;
+                    }
+                    else if(y == ''){
+                        alert("Select last n transactions or date.");
+                        return false;
+                    }
+                    else if(y == 'option_2'){
+                        start = document.forms["statements"]["start_date"].value;
+                        end   = document.forms["statements"]["end_date"].value;
+                        if(start == ''){
+                            alert("Please select start date");
+                            return false;
+                        }
+                        else if(end == ''){
+                            alert("Please select end date");
+                            return false;
+                        }  
+                    }
+                    else{
+                        return true;
+                    }
+                }
+
+                function enable_disable() { 
+                    $("last_n_tran").prop('disabled', true); 
+                    $("start_date").prop('disabled', true); 
+                    $("end_date").prop('disabled', true); 
+
+                } 
+                
+            </script>   
+
+            <center>  
+                <div>
+                    <form name="statements" action="http://localhost:5000/statements" method="post" novalidate onsubmit="validateForm()">
+                        <fieldset class="form-group">
+                            <legend>{{title}}</legend>     
+                            <table style="width:700px; background-color:#999ba1;padding: 5px;margin: 30px">
+                                <tr><td></td><td></td><td></td><td></td></tr>
+
+                                <tr><td></td><td colspan="3">*select one of the two radio buttons</td></tr>
+                                <tr>
+                                    <td></td>
+                                    <td width="200px%"><label for="ws_acc_id">Account Id</label></td>
+                                    <td width="400px"><input type="text" id="ws_acc_id" name="ws_acc_id" placeholder="Account Number" required></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td width="200px"><input type="radio" id='option_1' name="option" value="option_1" onclick="enable_disable()">
+                                    <label for="option_1">Select Transactions</label></td>
+                                    <td width="400px"></td>
+                                    <td></td>
+
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td width="200px"><label for="last_n_tran">Last N Transactions</label></td>
+                                    <td width="400px">
+                                    <select name="last_n_tran" id="last_n_tran">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td width="200px"><input type="radio" id='option_2' name="option" value="option_2" onclick="enable_disable()">
+                                    <label for="option_2">Select Date</label></td>
+                                    <td width="400px"></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td width="200px"><label for="start_date">Start Date</label></td>
+                                    <td width="400px"><input type="date" id="start_date" name="start_date" ></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td width="200px"><label for="end_date">End Date</label></td>
+                                    <td width="400px"><input type="date" id="end_date" name="end_date" ></td>
+                                    <td></td>
+                                </tr>
+                                <tr><td></td><td></td><td></td><td></td></tr>
+                                <tr>
+                                    <td></td>
+                                    <td><input type="submit" value="Show"></td>
+                                    <td><input type="reset" value="Reset"></td>
+                                    <td></td>
+                                </tr>
+                                <tr><td></td><td></td><td></td><td></td></tr>
+
+                            </table>
+                        </fieldset>
+                    </form>
+                </div>
+            </center>
+        {% endif %}
+    {% endblock %}

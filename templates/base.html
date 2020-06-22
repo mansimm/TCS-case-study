@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <center>
+            <div class="box_shadow_logo" >
+                <img src="{{ url_for('static',filename='images/bank_logo.png') }}" width="150px" height="150px">
+            </div>
+            </center>
+            
+            <h1 class="shadow">Welcome The Invincible Bank.</h1>
+            <font color="WHITE"><marquee direction="right" style="background:RED">Click here to get latest updates</marquee></font>
+            {% if session['user_name'] %}
+            <h3>Let's get started.</h3>
+            {% else %}
+            <p>This website is developed for employees of The Invinsible Bank. Two types of employees can use this website</p>
+                    <li>1.Account Executive</li></br>
+                    <li>2.Cashier</li></br>
+            <p>You must login from login option with your employee type.</p></br>
+            </br>
+            </br>
+            
+            </br>
+            </br>
+        </br></br></br></br>
+            {% endif %}
+
+            </div>
+    </div>
+{% endblock%}

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+<!--Contact-->
+
+<div class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"><img src="static/images/location.webp"width="20px"height="20px"></span> Pune, Maharashtra, India</p>
+      <p><span class="glyphicon glyphicon-phone"></span><img src="static/images/phone.webp"width="20px"height="20px"> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span><img src="static/images/email.webp"width="20px"height="20px"> myemail@something.com</p>
+    </div>
+    <div >
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required></br>
+          <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+      
+          <button class="btn btn-default pull-right" type="submit">Send</button></br></br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<img src="static/images/map.jpg" style="width:100%"> 
+  {% endblock%}

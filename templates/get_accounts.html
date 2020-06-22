@@ -1,0 +1,86 @@
+
+    {% extends "layout.html" %}
+   
+    {% block content %}
+        {% if  accounts %}
+        
+                <center><h3>Account Details :</h3></center>
+                <div>
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Customer Id</th>
+                            <th scope="col">Account Id</th>
+                            <th scope="col">Account Type</th>
+                            <th scope="col">Balance</th>
+                            <th scope="col">Created on</th>
+                            <th scope="col">Last updated</th>
+                        
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for account in accounts %}
+                        <tr>
+                            <td scope='row'>{{ account["ws_cust_id"] }}</td>
+                            <td scope='row'>{{ account["ws_acc_id"] }}</td>
+                            <td scope='row'>{{ account["ws_acct_type"] }}</td>
+                            <td scope='row'>{{ account["ws_acct_balance"] }}</td>
+                            <td scope='row'>{{ account["ws_acct_crdate"] }}</td>
+                            <td scope='row'>{{ account["ws_acct_lasttrdate"] }}</td>
+                            <td scope='row'></td>
+                        
+                        </tr>
+                        {% endfor %}
+                        
+                        </tbody>
+                    </table>
+                </div>
+        {% endif %}
+        {% if form %}        
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                <div class="container">
+                
+                <div class="divclass" >
+                <form name="get_accounts" action="" method="post" novalidate>
+                <fieldset class="form-group">
+                    <legend>{{title}}</legend>     
+                    {{ form.hidden_tag() }}      
+                    
+                        
+                        <p> {{ form.input_type.label }}</br>
+                            {{ form.input_type }}
+                            {% for error in form.input_type.errors %}
+                            <span class="error-message">{{ error }}</span>
+                            {% endfor %}
+                        </p>
+                    
+                        <p> {{ form.input.label }}</br>
+                            {{ form.input }}
+                            {% for error in form.input.errors %}
+                            <span class="error-message">{{ error }}</span>
+                            {% endfor %}
+                        </p>
+                    
+                        <p>
+                            <table align="center">
+                            <tr>
+                            <th width="100px"></th>
+                            <th width='200px'>{{ form.submit() }}</th>
+                            <th width='100px'></th>
+                            <th width='200px'><input type='reset' value="Reset"></th>
+                            <th width='100px'></th>
+                            </tr>
+                            </table></br>
+                        </p>
+                    
+                </fieldset>
+                </form>
+            </div>
+            </div>
+            </div>
+            </div>
+        {% endif %}
+    {% endblock %}

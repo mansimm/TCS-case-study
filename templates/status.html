@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+<font color="WHITE"><marquee direction="right" style="background:RED"><h3>Click below to view status </h3></marquee></font>
+
+</br></br>
+<div class="btn-group">
+    <a href="{{url_for('customer_status')}}"><button>View Customer Status</button></a>
+    <a href="{{url_for('account_status')}}"><button>View Account Status</button></a>
+
+  </div> 
+</br></br></br></br></br></br></br></br>
+{% endblock%}

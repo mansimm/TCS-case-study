@@ -1,0 +1,76 @@
+
+    {% extends "layout.html" %}
+   
+    {% block content %}
+    <script>
+        function validateForm() {
+            var x = document.forms["update"]["ws_name"].value;
+            var y = document.forms["update"]["ws_adrs"].value;
+            var z = document.forms["update"]["ws_age"].value;
+
+            if (x == "") {
+                alert("Please enter your name !");
+                return false;
+            }
+            else if(y == ''){
+                alert("Please enter address !");
+                return false;
+            }
+            else if(z == ''){
+                alert("Please enter age !")
+            }
+            else{
+                return true;
+            }
+        }
+        
+    </script>   
+
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+         <div class="update">
+            {% if not customer %}
+            <h2>Customer not found !</h2>
+            {% else %}
+            <form name="login" action="http://localhost:5000/update_customer" method="post"  onsubmit="validateForm()">
+            <fieldset class="form-group">
+                <legend>{{title}}</legend>     
+                <table style="width:1000px">
+                    <tr>
+                        <td width="30%"><label for="ws_cust_id">Customer Id</label></br></td>
+                        <td width="70%"><input type="text" id="ws_cust_id" name="ws_cust_id" value="{{ customer['ws_cust_id'] }}" ></td>
+                    </tr>
+                    <tr>
+                        <td width="30%"><label for="ws_ssn">SSN Id</label></br></td>
+                        <td width="70%"><input type="text" id="ws_ssn" name="ws_ssn" value="{{ customer['ws_ssn'] }}" ></td>
+                    </tr>
+                    <tr>
+                        <td width="30%"><label for="ws_name">Name</label></br></td>
+                        <td width="70%"><input type="text" id="ws_name" name="ws_name" value="{{ customer['ws_name'] }}"></td>
+                    </tr>
+                    <tr>
+                        <td width="30%"><label for="ws_adrs">Address</label></br></td>
+                        <td width="70%"><input type="text" id="ws_adrs" name="ws_adrs" value="{{ customer['ws_adrs'] }}"></td>
+                    
+                    </tr>
+                    <tr>
+                        <td width="30%"><label for="ws_age">Age</label></br></td>
+                        <td width="70%"><input type="text" id="ws_age" name="ws_age" value="{{ customer['ws_age'] }}"></td>
+                    
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Update"></td>
+                        <td>
+                            <a href="{{url_for('customer')}}"><input type="button" value="Back to Customer Management" onclick="customer.html"></a>
+                        </td>
+                    </tr>
+                
+                </table>
+            </fieldset>
+            </form>
+            {% endif %}
+    </div>
+    </div>
+    </div>
+    {% endblock %}

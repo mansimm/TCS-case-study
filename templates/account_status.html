@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+    {% if title %}
+        <h1>{{ title }}</h1>
+    {% endif %}
+        <div class="btn-group">
+        <a href="{{url_for('customer_status')}}"><button>View Customer Status</button></a>
+        <a href="{{url_for('account_status')}}"><button>View Account Status</button></a>
+    
+      </div> </br>
+        <!--  Display the Term and Year here --->
+        {% if not accounts %}
+            <h1>Accounts not found !</h1>
+        {% else %}    
+        <center><h3>Account Details :</h3></center>
+        <div>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Account Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Last updated</th>
+                    <th scope="col">Refresh</th>
+                   
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for account in accounts %}
+                <tr>
+                    <td scope='row'>{{ account["ws_cust_id"] }}</td>
+                    <td scope='row'>{{ account["ws_acct_type"] }}</td>
+                    <td scope='row'>{{ account["status"] }}</td>
+                    <td scope='row'>{{ account["message"] }}</td>
+                    <td scope='row'>{{ account["last_updated"] }}</td>
+                    <td scope='row'>
+                        <form action="{{ url_for( 'account_status')}}" >
+                            <button class="btn-submit">Refresh</button>
+                        </form>
+                    </td>
+                
+                </tr>
+                {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+{% endblock%}

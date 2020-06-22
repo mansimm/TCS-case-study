@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+   
+{% block content %}
+    {% if title=="Deleted Customer" %}
+        <h1>{{ title }}</h1>
+    {% else %}
+        
+        <!--  Display the Term and Year here --->
+        {% if not accounts %}
+            <h1>Accounts not found !</h1>
+        {% else %}    
+        <center><h3>Account Details :</h3></center>
+        <div>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Account Id</th>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Account Type</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Created on</th>
+                    <th scope="col">Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <!-- Construct the rest of courses here -->
+                {% for account in accounts %}
+                <tr>
+                    <td scope='row'>{{ account["ws_acc_id"] }}</td>
+                    <td scope='row'>{{ account["ws_cust_id"] }}</td>
+                    <td>{{ account["ws_acct_type"] }}</td>
+                    <td>{{ account["ws_acct_balance"] }}</td>
+                    <td>{{ account["ws_acct_crdate"] }}</td>
+                    <td>
+                        <form action="{{url_for('delete_account')}}" method="POST">
+                            <input type="hidden" name="ws_acc_id" value="{{account['ws_acc_id']}}"> 
+                            <input type="hidden" name="ws_cust_id" value="{{account['ws_cust_id']}}">
+                            <input type="hidden" name="ws_acct_type" value="{{account['ws_acct_type']}}"> 
+                            <input type="hidden" name="ws_acct_balance" value="{{account['ws_acct_balance']}}"> 
+
+                        <button class="btn-delete">Delete</button>
+                        </form>
+                    </td>
+                
+                </tr>
+                {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+    {% endif %}
+{% endblock%}
