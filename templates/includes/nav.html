@@ -38,6 +38,10 @@
                 </div>
             </li>
             {% endif %}
+            
+            {% if session['user_type']=='executive' %}
+            <li class="nav-item"><a href="{{ url_for('status') }}" class="nav-link {% if status %}active{% endif%}">View Status</a></li>
+            {% endif%}
             <!--
             {% if session['user_type']=='executive' %}
             <li class="nav-item"><a href="{{ url_for('create_customer') }}" class="nav-link {% if create_customer %}active{% endif%}">Create Customer</a></li>
@@ -60,9 +64,7 @@
             <li class="nav-item"><a href="{{ url_for('find_account') }}" class="nav-link {% if delete_account %}active{% endif%}">Delete Account</a></li>
             {% endif%}
 
-            {% if session['user_type']=='executive' %}
-            <li class="nav-item"><a href="{{ url_for('status') }}" class="nav-link {% if status %}active{% endif%}">View Status</a></li>
-            {% endif%}
+            
 -->
             <!--#######################################  Cashier ################################################-->
             {% if session['user_type']=='cashier' %}

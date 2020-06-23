@@ -21,6 +21,7 @@ body {
 
 header {
     text-align: center;
+    background-color: white;
 }
 
 li {
@@ -58,14 +59,14 @@ hr {
 }
 
 .container-term {
-    width:80%;
-    margin-left: auto;
-    margin-right: auto;
+    width:100%;
+    margin-left: 10px;
+    margin-right: 10px;
     text-align: left;
 }
 footer {
     text-align: center;
-    height: 50px;
+    height: 100px;
     color: white;
     padding: 5px;
     margin-top: 10px;
@@ -214,7 +215,10 @@ footer {
   }
   .shadow {
     color: white;
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    background: rgb(236, 146, 146);
+    /*text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;*/
+    padding: 5px;
+    text-shadow: 1px 1px 2px blue,1px 1px 2px black;
   }
   .box_shadow_logo {
     width: 150px;

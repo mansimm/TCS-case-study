@@ -3,29 +3,103 @@
 {% block content %}
     <div class="row">
         <div class="col-md-12 text-center">
+            <!--
             <center>
             <div class="box_shadow_logo" >
                 <img src="{{ url_for('static',filename='images/bank_logo.png') }}" width="150px" height="150px">
             </div>
             </center>
-            
-            <h1 class="shadow">Welcome The Invincible Bank.</h1>
+            -->
+            <h1 class="shadow">Banking & Budgeting, made Simple</h1>
             <font color="WHITE"><marquee direction="right" style="background:RED">Click here to get latest updates</marquee></font>
-            {% if session['user_name'] %}
-            <h3>Let's get started.</h3>
-            {% else %}
-            <p>This website is developed for employees of The Invinsible Bank. Two types of employees can use this website</p>
-                    <li>1.Account Executive</li></br>
-                    <li>2.Cashier</li></br>
-            <p>You must login from login option with your employee type.</p></br>
-            </br>
-            </br>
             
-            </br>
-            </br>
-        </br></br></br></br>
-            {% endif %}
-
             </div>
     </div>
+    
+
+
+
+      <div class="card text-white bg-dark mb-3" style="max-width: 100%;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="static/images/bank_logo.png" class="card-img" alt="bank logo">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Welcome</h5>
+              <p class="card-text">
+                    This website is developed for employees of The Invinsible Bank. Two types of employees can use this website
+                    <li>1.Account Executive</li></br>
+                    <li>2.Cashier</li></br>
+                    Account executive can manage accounts and customers.Under customer management executive can create, update, delete
+                    customers.Under account management section executive can create and delete accounts for existing bank customers.
+                    Bank cashier can get accounts and account details.From account details cashier can deposite, withdraw or transfer cash.
+                    Cashier can easily get bank statements easily from get statements option.</br>
+
+                    {% if session['user_name'] %}
+                    <h3>Let's get started.</h3>
+                    {% else %}
+
+                    You must login from login option with your employee type.</br></br>
+                    Click below buttom to login.
+                    </br>
+                    <a href="{{ url_for('login') }}" class="btn btn-primary">Employee Login</a>
+
+                    {% endif %}
+              </p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+         
+            
+        
+        <div class="card-deck">
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><b>How Simple works</b></h5>
+                  <p class="card-text">1) Put money in your account<br>
+                                        2) We’ll help you divvy things up<br>
+                                        3) So you can spend with certainty<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><b>Customers in need of extra care</b></h5>
+                  <p class="card-text">If you are experiencing financial difficulty or difficult personal circumstances, 
+                                        find out how we can help.</br>
+                                        <a href="{{ url_for('contacts') }}"><img src="static/images/icon.png"width="20px"height="20px"></a>
+                                        <u>Get Help</u>
+                                        
+                                    </p>
+                </div>
+              </div>
+
+              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><b>Feedback and complaints</b></h5>
+                  <p class="card-text">We welcome your feedback whether it's a compliment, suggestion or a complaint.</br>
+                    <a href="{{ url_for('contacts') }}"><img src="static/images/icon.png"width="20px"height="20px"></a>
+                    <u>Complaint here</u>
+                  </p>
+                </div>
+              </div>
+
+              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><b>Business banking</b></h5>
+                  <p class="card-text">
+                    <img src="static/images/icon.png"width="20px"height="20px"> Bank accounts</br>
+                    <img src="static/images/icon.png"width="20px"height="20px"> Credit cards</br>
+                    <img src="static/images/icon.png"width="20px"height="20px"> Payment solutions</br>
+                    <img src="static/images/icon.png"width="20px"height="20px"> Business loans</br>
+                </p>
+                </div>
+              </div>
+            
+        </div>
 {% endblock%}

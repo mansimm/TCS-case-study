@@ -71,10 +71,34 @@
                     }
                 }
 
+                $(document).ready(function(){
+                            $("#last_n_tran_label").hide();
+                            $("#last_n_tran").hide();
+                            $("#start_date").hide();
+                            $("#start_date_label").hide();
+                            $("#end_date").hide();
+                            $("#end_date_label").hide();
+                });
                 function enable_disable() { 
-                    $("last_n_tran").prop('disabled', true); 
-                    $("start_date").prop('disabled', true); 
-                    $("end_date").prop('disabled', true); 
+                    var id1 = document.forms['statements']['option'].value;
+                    if(id1 == 'option_1'){
+                            $("#last_n_tran_label").show();
+                            $("#last_n_tran").show();
+                            $("#start_date").hide();
+                            $("#start_date_label").hide();
+                            $("#end_date").hide();
+                            $("#end_date_label").hide();
+
+                        
+                    }
+                    else if(id1 == 'option_2'){
+                            $("#last_n_tran_label").hide();
+                            $("#last_n_tran").hide();
+                            $("#start_date").show();
+                            $("#start_date_label").show();
+                            $("#end_date").show();
+                            $("#end_date_label").show();
+                    }
 
                 } 
                 
@@ -88,13 +112,15 @@
                             <table style="width:700px; background-color:#999ba1;padding: 5px;margin: 30px">
                                 <tr><td></td><td></td><td></td><td></td></tr>
 
-                                <tr><td></td><td colspan="3">*select one of the two radio buttons</td></tr>
+                                <tr><td></td><td colspan="3"></td></tr>
                                 <tr>
                                     <td></td>
                                     <td width="200px%"><label for="ws_acc_id">Account Id</label></td>
                                     <td width="400px"><input type="text" id="ws_acc_id" name="ws_acc_id" placeholder="Account Number" required></td>
                                     <td></td>
                                 </tr>
+                                <tr><td></td><td colspan="3">*select one of the two radio buttons</td></tr>
+
                                 <tr>
                                     <td></td>
                                     <td width="200px"><input type="radio" id='option_1' name="option" value="option_1" onclick="enable_disable()">
@@ -105,9 +131,9 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td width="200px"><label for="last_n_tran">Last N Transactions</label></td>
+                                    <td width="200px"><label for="last_n_tran" id="last_n_tran_label" >Last N Transactions</label></td>
                                     <td width="400px">
-                                    <select name="last_n_tran" id="last_n_tran">
+                                    <select name="last_n_tran" id="last_n_tran" >
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -122,6 +148,8 @@
                                     </td>
                                     <td></td>
                                 </tr>
+
+
                                 <tr>
                                     <td></td>
                                     <td width="200px"><input type="radio" id='option_2' name="option" value="option_2" onclick="enable_disable()">
@@ -129,18 +157,22 @@
                                     <td width="400px"></td>
                                     <td></td>
                                 </tr>
+
+
                                 <tr>
                                     <td></td>
-                                    <td width="200px"><label for="start_date">Start Date</label></td>
+                                    <td width="200px"><label for="start_date" id="start_date_label">Start Date</label></td>
                                     <td width="400px"><input type="date" id="start_date" name="start_date" ></td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td width="200px"><label for="end_date">End Date</label></td>
+                                    <td width="200px"><label for="end_date" id="end_date_label">End Date</label></td>
                                     <td width="400px"><input type="date" id="end_date" name="end_date" ></td>
                                     <td></td>
                                 </tr>
+
+
                                 <tr><td></td><td></td><td></td><td></td></tr>
                                 <tr>
                                     <td></td>
@@ -155,5 +187,8 @@
                     </form>
                 </div>
             </center>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            
         {% endif %}
     {% endblock %}

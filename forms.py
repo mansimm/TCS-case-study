@@ -55,7 +55,7 @@ class CreateAccountForm(FlaskForm):
 
 class FindAccount(FlaskForm):
     ws_ssn           = StringField("SSN Id", validators=[Optional(),Integer(),Length(min=9,max=9) ] ,render_kw={"placeholder": "Enter SSN Id"})
-    ws_cust_id       = StringField("Customer Id", validators=[Optional(), Integer() ],render_kw={"placeholder": "Enter customer Id"})
+    ws_cust_id       = StringField("Customer Id", validators=[Optional(), Integer() ,Length(min=1,max=9)],render_kw={"placeholder": "Enter customer Id"})
     submit           = SubmitField("Search")
 
 
