@@ -3,13 +3,16 @@ from app import db,app
 import random
 from sqlalchemy import and_
 
+import pdfkit
+pdfkit.from_url("http://google.com", "statements.pdf")
+
 from forms import SignUpForm,LoginForm,CreateCustomerForm, PullCustomer, FindCustomer, CreateAccountForm, FindAccount, GetAccount
 from forms import DepositeForm ,WithdrawForm, TransferForm, GetStatementFrom
 
 
 from flask_login import login_user, login_required, current_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask import Blueprint, render_template, request, flash, redirect, url_for, session
+from flask import Blueprint, render_template, request, flash, redirect, url_for, session, make_response
 
 from models import User, Customer, Account, CustomerStatus, AccountStatus,Transaction
 
@@ -597,3 +600,29 @@ def aboutus():
 @app.route("/contacts")
 def contacts():
     return render_template("contacts.html",contacts=True,title='Contacts')
+
+'''
+
+@app.route("/download_pdf/<transactions>",methods=['POST','GET'])
+def download_pdf(transactions):
+    if request.method == 'POST':
+        if transactions:
+            flash(f"id={transactions}")
+            id=0
+            for trans in transactions:
+                id = trans.ws_acc_id
+                break
+            temp = Transaction.query.filter_by(ws_acc_id = id).all()
+            return render_template('statements.html',transactions = temp)
+            
+            rendered = render_template("pdf.html",transactions=transactions)
+            pdf = pdfkit.from_string( rendered, False)
+            response = make_response(pdf)
+            response.headers['Content-Type']='application/pdf'
+            response.headers['Content-Desposition'] = 'inline; filename=statements.pdf'
+            return response
+            
+        else:
+            flash("transactin not present","danger")
+            return render_template('pdf.html')
+'''
